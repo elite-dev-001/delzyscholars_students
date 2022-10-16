@@ -78,7 +78,7 @@ function LearnTab() {
                     {/* <div className="vidcontainer"> */}
                         {/* <video id="myvid"></video> */}
                         {console.log(pdf)}
-                        <iframe 
+                        <embed 
                             src={pdf + "#toolbar=0"}
                             type='application/pdf'
                             // height={600}
