@@ -14,6 +14,8 @@ function CourseDetails() {
     const materialId = idData.id.slice(1, 25)
     const studentId = idData.id.slice(26)
 
+    const pin = window.localStorage.getItem(materialId)
+
     useEffect(() => {
         axios.get(`https://delzyscholarsapi.herokuapp.com/api/materials/get/one/material/${idData.id.slice(1, 25)}`).then((res) => {
             console.log(idData)
@@ -47,7 +49,7 @@ const config = {
     email: student['email'],
     number: student['phoneNumber'],
     amount: parseFloat(data['courseAmount']) * 100,
-    publicKey: livePublicKey
+    publicKey: testPublicKey
 }
 
 
@@ -56,8 +58,10 @@ const onSuccess = (reference) => {
     const x = {courseId: materialId}
     axios.patch(`https://delzyscholarsapi.herokuapp.com/api/update/courses/${studentId}`, x).then((res) => {
         console.log(res)
+        const pin = res.data['pin']
+        window.localStorage.setItem(materialId, pin)
         window.alert('Payment Successful')
-        window.location.href = `/${studentId}`
+        window.location.reload()
     }).catch((err) => {
         console.log(err)
     })
@@ -332,7 +336,7 @@ const PaystackHookExample = () => {
                         {/* <!-- Sidebar Widget Information Start --> */}
                         <div className="sidebar-widget widget-information">
                             <div className="info-price">
-                                <span className="price"> ₦ {data['courseAmount']} </span>
+                                <span className="price"> {myCourses.includes(materialId) ? 'Download DelzyScholar App and Activate your Course' : `₦ ${data['courseAmount']}`} </span>
                             </div>
                             <div className="info-list">
                                 <ul>
@@ -346,9 +350,12 @@ const PaystackHookExample = () => {
                             </div>
                             <div className="info-btn">
                                 {
-                                    myCourses.includes(materialId) ? <Link to={`/learning:${materialId}`} className="btn btn-primary btn-hover-dark">Proceed to Learn</Link> :
+                                    myCourses.includes(materialId) ? <a href='#' className="btn btn-primary btn-hover-dark">Pin: {pin}</a> :
                                     <PaystackHookExample />
                                 }
+                            </div>
+                            <div className='info-btn'>
+                                <Link to={`/learning:${materialId}`} className="btn btn-primary btn-hover-dark">Preview Course</Link>
                             </div>
                         </div>
                         {/* <!-- Sidebar Widget Information End --> */}

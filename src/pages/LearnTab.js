@@ -169,12 +169,11 @@ function LearnTab() {
 
                                 <div id="collapseOne" className="accordion-collapse collapse" data-bs-parent="#videoPlaylist">
                                     <nav className="vids">
-                                        {
-                                            content.map((item, index) => <a onClick={(e) => selectPdf(e, index)} key={index} className="link" href="#">
-                                            <p>{`Chapter ${index+1}`}. {item['topic']}</p>
+                                        <a onClick={(e) => selectPdf(e, 0)}className="link" href="#">
+                                            <p>{`Chapter ${1}`}. {content['topic']}</p>
                                             {/* <span className="total-duration">08 minutes</span> */}
-                                        </a>)
-                                        }
+                                        </a>
+                                        
                                     </nav>
                                 </div>
                             </div>
