@@ -77,13 +77,18 @@ function LearnTab() {
                     {/* <!-- Courses Video Container Start --> */}
                     {/* <div className="vidcontainer"> */}
                         {/* <video id="myvid"></video> */}
-                        {console.log(pdf)}
-                        <embed 
+                        {/* {console.log(pdf)} */}
+                        {/* <embed 
                             src={pdf + "#toolbar=0"}
                             type='application/pdf'
                             // height={600}
                             width='100%'
                             className='vidcontainer'
+                        /> */}
+                        <object 
+                            width={900}
+                            height="900"
+                            data={`https://docs.google.com/gview?embedded=true&url=${pdf}`}
                         />
                         {/* <div className="video-play-bar">
                             <div className="topControl">
