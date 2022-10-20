@@ -77,7 +77,7 @@ function LearnTab() {
                     {/* <!-- Courses Video Container Start --> */}
                     {/* <div className="vidcontainer"> */}
                         {/* <video id="myvid"></video> */}
-                        {/* {console.log(pdf)} */}
+                        {console.log(pdf)}
                         {/* <embed 
                             src={pdf + "#toolbar=0"}
                             type='application/pdf'
@@ -87,8 +87,8 @@ function LearnTab() {
                         /> */}
                         <object 
                             width="100%"
-                            height="900"
-                            data={`https://docs.google.com/gview?embedded=true&url=${pdf}`}
+                            height="1000"
+                            data={`https://docs.google.com/gview?embedded=true&url=https://res.cloudinary.com/dziy1glm5/image/upload/v1666296668/otbf6c8vwkxigswl7f6k.pdf`}
                         />
                         {/* <div className="video-play-bar">
                             <div className="topControl">
