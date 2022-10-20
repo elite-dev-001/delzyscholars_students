@@ -49,7 +49,7 @@ const config = {
     email: student['email'],
     number: student['phoneNumber'],
     amount: parseFloat(data['courseAmount']) * 100,
-    publicKey: testPublicKey
+    publicKey: livePublicKey
 }
 
 
