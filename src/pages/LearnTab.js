@@ -87,7 +87,7 @@ function LearnTab() {
                         /> */}
                         <object 
                             width="100%"
-                            height="900vh"
+                            height="100%"
                             data={`https://docs.google.com/gview?embedded=true&url=${pdf}`}
                         />
                         {/* <div className="video-play-bar">
