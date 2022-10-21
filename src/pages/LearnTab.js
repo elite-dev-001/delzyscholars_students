@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import { useParams } from 'react-router-dom'
 import Footer from './Footer/Footer'
 
@@ -9,6 +9,11 @@ function LearnTab() {
     const [data, setData] = useState({})
     const [content, setContent] = useState([])
     const [pdf, setPdf] = useState('')
+    const topContainer = useRef();
+
+    useEffect(() => {
+        topContainer.current.scrollIntoView({block: "start", behavior: 'smooth'})
+    }, [])
 
     useEffect(() => {
         axios.get(`https://delzyscholarsapi.herokuapp.com/api/materials/get/one/material/${id.slice(1, 25)}`).then((res) => {
@@ -31,7 +36,7 @@ function LearnTab() {
 
     
   return (
-    <div className="main-wrapper">
+    <div className="main-wrapper" ref={topContainer}>
 
         {/* <!-- Login Header Start --> */}
         <div className="section login-header">
@@ -221,7 +226,7 @@ function LearnTab() {
                     {/* <!-- Download App Button End --> */}
                     <div className="download-app-btn">
                         <ul className="app-btn">
-                            <li><a href="#"><img src="assets/images/google-play.png" alt="Google Play" /></a></li>
+                            <li><a href="https://mega.nz/file/HpNwHKLK#YryE5dTW6LktnDcTJxYjAzsFIA76apQZ94W6tRMdQvg"><img src="assets/images/google-play.png" alt="Google Play" /></a></li>
                             <li><a href="#"><img src="assets/images/app-store.png" alt="App Store" /></a></li>
                         </ul>
                     </div>

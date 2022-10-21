@@ -71,15 +71,15 @@ function changeActive(e, num) {
 
                         {/* <!-- Header Top Left Start --> */}
                         <div className="header-top-left">
-                            <p>All course 28% off for <a href="#">Liberian people’s.</a></p>
+                            <p>{data['name']}</p>
                         </div>
                         {/* <!-- Header Top Left End --> */}
 
                         {/* <!-- Header Top Medal Start --> */}
                         <div className="header-top-medal">
                             <div className="top-info">
-                                <p><i className="flaticon-phone-call"></i> <a href="tel:9702621413">(970) 262-1413</a></p>
-                                <p><i className="flaticon-email"></i> <a href="mailto:address@gmail.com">address@gmail.com</a></p>
+                                <p><i className="flaticon-phone-call"></i> <a href="tel:9702621413">{data['phoneNumber']}</a></p>
+                                <p><i className="flaticon-email"></i> <a href="mailto:address@gmail.com">{data['email']}</a></p>
                             </div>
                         </div>
                         {/* <!-- Header Top Medal End --> */}
@@ -314,7 +314,7 @@ function changeActive(e, num) {
                     {/* <!-- Download App Button End --> */}
                     <div className="download-app-btn">
                         <ul className="app-btn">
-                            <li><a href="#"><img src="assets/images/google-play.png" alt="Google Play" /></a></li>
+                            <li><a href="https://mega.nz/file/HpNwHKLK#YryE5dTW6LktnDcTJxYjAzsFIA76apQZ94W6tRMdQvg"><img src="assets/images/google-play.png" alt="Google Play" /></a></li>
                             <li><a href="#"><img src="assets/images/app-store.png" alt="App Store" /></a></li>
                         </ul>
                     </div>

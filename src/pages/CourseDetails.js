@@ -1,20 +1,37 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { usePaystackPayment } from 'react-paystack';
 import Footer from './Footer/Footer';
 
 
 function CourseDetails() {
+    const topContainer = useRef();
     const idData = useParams();
     const [data, setData] = useState({})
     const [student, setStudent] = useState({})
     const [content, setContent] = useState([])
+    const [user, setUser] = useState({})
     const [myCourses, setMyCourses] = useState([])
     const materialId = idData.id.slice(1, 25)
     const studentId = idData.id.slice(26)
 
     const pin = window.localStorage.getItem(materialId)
+
+    useEffect(() => {
+        topContainer.current.scrollIntoView({block: "start", behavior: 'smooth'})
+    }, [])
+
+    useEffect(() => {
+        axios.get(`https://delzyscholarsapi.herokuapp.com/api/get/one/${studentId}`).then((res) => {
+            console.log(res.data)
+            const results = res.data[0]
+            setUser(results)
+            // setMyCourses(results['myCourses'])
+        }).catch((err) => {
+            console.error(err)
+        })
+    },[])
 
     useEffect(() => {
         axios.get(`https://delzyscholarsapi.herokuapp.com/api/materials/get/one/material/${idData.id.slice(1, 25)}`).then((res) => {
@@ -46,7 +63,7 @@ const testPublicKey = 'pk_test_81b44119342883ffd970a7900732d9d6e00cd157'
 
 const config = {
     reference: (new Date()).getTime().toString(),
-    email: student['email'],
+    email: 'support@delzyscholars.com',
     number: student['phoneNumber'],
     amount: parseFloat(data['courseAmount']) * 100,
     publicKey: livePublicKey
@@ -82,14 +99,14 @@ const PaystackHookExample = () => {
         <div>
             <button className="btn btn-primary btn-hover-dark w-100" onClick={() => {
                 initializePayment(onSuccess, onClose)
-            }}>Enroll Now</button>
+            }}>Click to make payments</button>
         </div>
     );
 }
 
 
   return (
-    <div className="main-wrapper">
+    <div className="main-wrapper" ref={topContainer}>
 
     {/* <!-- Header Section Start --> */}
     <div className="header-section">
@@ -103,15 +120,15 @@ const PaystackHookExample = () => {
 
                     {/* <!-- Header Top Left Start --> */}
                     <div className="header-top-left">
-                        <p>All course 28% off for <a href="#">Liberian people’s.</a></p>
+                        <p>{user['name']}</p>
                     </div>
                     {/* <!-- Header Top Left End --> */}
 
                     {/* <!-- Header Top Medal Start --> */}
                     <div className="header-top-medal">
                         <div className="top-info">
-                            <p><i className="flaticon-phone-call"></i> <a href="tel:9702621413">(970) 262-1413</a></p>
-                            <p><i className="flaticon-email"></i> <a href="mailto:address@gmail.com">address@gmail.com</a></p>
+                            <p><i className="flaticon-phone-call"></i> {user['phoneNumber']}</p>
+                            <p><i className="flaticon-email"></i> {user['email']}</p>
                         </div>
                     </div>
                     {/* <!-- Header Top Medal End --> */}
@@ -348,14 +365,14 @@ const PaystackHookExample = () => {
                                     {/* <li><i className="icofont-certificate-alt-1"></i> <strong>Certificate</strong> <span>Yes</span></li> */}
                                 </ul>
                             </div>
+                            <div className='info-btn'>
+                                <Link to={`/learning:${materialId}`} className="btn btn-primary btn-hover-dark">Preview Course</Link>
+                            </div>
                             <div className="info-btn">
                                 {
                                     myCourses.includes(materialId) ? <a href='#' className="btn btn-primary btn-hover-dark">Pin: {pin}</a> :
                                     <PaystackHookExample />
                                 }
-                            </div>
-                            <div className='info-btn'>
-                                <Link to={`/learning:${materialId}`} className="btn btn-primary btn-hover-dark">Preview Course</Link>
                             </div>
                         </div>
                         {/* <!-- Sidebar Widget Information End --> */}
@@ -393,7 +410,7 @@ const PaystackHookExample = () => {
                 {/* <!-- Download App Button End --> */}
                 <div className="download-app-btn">
                     <ul className="app-btn">
-                        <li><a href="#"><img src="assets/images/google-play.png" alt="Google Play" /></a></li>
+                        <li><a href="https://mega.nz/file/HpNwHKLK#YryE5dTW6LktnDcTJxYjAzsFIA76apQZ94W6tRMdQvg"><img src="assets/images/google-play.png" alt="Google Play" /></a></li>
                         <li><a href="#"><img src="assets/images/app-store.png" alt="App Store" /></a></li>
                     </ul>
                 </div>
