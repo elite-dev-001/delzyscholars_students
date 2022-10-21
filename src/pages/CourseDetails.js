@@ -99,7 +99,7 @@ const PaystackHookExample = () => {
         <div>
             <button className="btn btn-primary btn-hover-dark w-100" onClick={() => {
                 initializePayment(onSuccess, onClose)
-            }}>Click to make payments</button>
+            }}>Click to make payments to view the remaining chapters</button>
         </div>
     );
 }
@@ -401,7 +401,7 @@ const PaystackHookExample = () => {
                 {/* <!-- Section Title Start --> */}
                 <div className="section-title section-title-white">
                     <h5 className="sub-title">Ready to start?</h5>
-                    <h2 className="main-title">Download our mobile app. for easy to start your course.</h2>
+                    <h2 className="main-title">Click here to Download our mobile app. for ease, to start your course.</h2>
                 </div>
                 {/* <!-- Section Title End --> */}
 

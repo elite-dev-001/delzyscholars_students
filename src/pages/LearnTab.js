@@ -217,7 +217,7 @@ function LearnTab() {
                     {/* <!-- Section Title Start --> */}
                     <div className="section-title section-title-white">
                         <h5 className="sub-title">Ready to start?</h5>
-                        <h2 className="main-title">Download our mobile app. for easy to start your course.</h2>
+                        <h2 className="main-title">Click here to Download our mobile app. for ease, to start your course.</h2>
                     </div>
                     {/* <!-- Section Title End --> */}
 
