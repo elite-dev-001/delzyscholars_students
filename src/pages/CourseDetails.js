@@ -23,7 +23,7 @@ function CourseDetails() {
     }, [])
 
     useEffect(() => {
-        axios.get(`https://delzyscholarsapi.herokuapp.com/api/get/one/${studentId}`).then((res) => {
+        axios.get(`https://thoughtful-pullover-worm.cyclic.app/api/get/one/${studentId}`).then((res) => {
             console.log(res.data)
             const results = res.data[0]
             setUser(results)
@@ -34,7 +34,7 @@ function CourseDetails() {
     },[])
 
     useEffect(() => {
-        axios.get(`https://delzyscholarsapi.herokuapp.com/api/materials/get/one/material/${idData.id.slice(1, 25)}`).then((res) => {
+        axios.get(`https://thoughtful-pullover-worm.cyclic.app/api/materials/get/one/material/${idData.id.slice(1, 25)}`).then((res) => {
             console.log(idData)
             console.log(res.data[0])
             setData(res.data[0])
@@ -47,7 +47,7 @@ function CourseDetails() {
 
 
     useEffect(() => {
-        axios.get(`https://delzyscholarsapi.herokuapp.com/api/get/one/${idData.id.slice(26)}`).then((res) => {
+        axios.get(`https://thoughtful-pullover-worm.cyclic.app/api/get/one/${idData.id.slice(26)}`).then((res) => {
             console.log(res.data)
             const results = res.data[0]
             setStudent(results)
@@ -73,7 +73,7 @@ const config = {
 const onSuccess = (reference) => {
     console.log(reference)
     const x = {courseId: materialId}
-    axios.patch(`https://delzyscholarsapi.herokuapp.com/api/update/courses/${studentId}`, x).then((res) => {
+    axios.patch(`https://thoughtful-pullover-worm.cyclic.app/api/update/courses/${studentId}`, x).then((res) => {
         console.log(res)
         const pin = res.data['pin']
         window.localStorage.setItem(materialId, pin)

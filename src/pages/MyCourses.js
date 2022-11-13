@@ -31,7 +31,7 @@ function changeActive(e, num) {
 
 
     useEffect(() => {
-        axios.get(`https://delzyscholarsapi.herokuapp.com/api/materials/get/all/materials`).then((res) => {
+        axios.get(`https://thoughtful-pullover-worm.cyclic.app/api/materials/get/all/materials`).then((res) => {
           console.log(res.data)
           console.log(id)
           const results = res.data['results']
@@ -45,7 +45,7 @@ function changeActive(e, num) {
       }, [])
 
       useEffect(() => {
-        axios.get(`https://delzyscholarsapi.herokuapp.com/api/get/one/${id}`).then((res) => {
+        axios.get(`https://thoughtful-pullover-worm.cyclic.app/api/get/one/${id}`).then((res) => {
             console.log(res.data)
             const results = res.data[0]
             setData(results)

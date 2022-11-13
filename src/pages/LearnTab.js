@@ -16,7 +16,7 @@ function LearnTab() {
     }, [])
 
     useEffect(() => {
-        axios.get(`https://delzyscholarsapi.herokuapp.com/api/materials/get/one/material/${id.slice(1, 25)}`).then((res) => {
+        axios.get(`https://thoughtful-pullover-worm.cyclic.app/api/materials/get/one/material/${id.slice(1, 25)}`).then((res) => {
             console.log(id)
             console.log(res.data[0])
             setData(res.data[0])
